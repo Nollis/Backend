@@ -16,7 +16,7 @@ app.UseRouting();
 app.MapControllerRoute(
     name: "checkage",
     pattern: "checkage",
-    defaults: new { controller = "Check", action = "CheckAge" });
+    defaults: new { controller = "Check", action = "CheckTemp" });
 
 app.MapControllerRoute(
     name: "default",

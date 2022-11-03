@@ -2,15 +2,19 @@
 {
     public class CheckModel
     {
-        public static string CheckAge(int age)
+        public static string CheckTemp(int temp)
         {
-            if(age <= 18)
+            if(temp > 37)
             {
-                return "you are not old enough";
+                return "you have a fever!";
+            }
+            else if(temp == 37)
+            {
+                return "You have normal temperature";
             }
             else
             {
-                return "you are old enough";
+                return "you have hypothermia!";
             }
         }
 

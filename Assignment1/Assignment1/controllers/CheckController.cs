@@ -10,13 +10,13 @@ namespace Assignment1.controllers
             return View();
         }
 
-        public IActionResult CheckAge()
+        public IActionResult CheckTemp()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult CheckAge(int input)
+        public IActionResult CheckTemp(int input)
         {
             //if (input >= 18)
             //{
@@ -26,7 +26,7 @@ namespace Assignment1.controllers
             //{
             //    ViewBag.Result = "You are not old enough to vote!";
             //}
-            ViewBag.Result = CheckModel.CheckAge(input);
+            ViewBag.Result = CheckModel.CheckTemp(input);
             return View();
         }
         public IActionResult SetSession()
