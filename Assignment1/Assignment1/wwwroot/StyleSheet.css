@@ -1,0 +1,158 @@
+﻿
+body {
+    background-color: rgb(202, 207, 154);
+    font-family: Arial, sans-serif;
+    max-width: 1024px;
+    margin: auto;
+}
+
+main {
+    width: 1024px;
+}
+
+header {
+    padding: 10px 15px;
+}
+
+form {
+    padding: 10px 15px 30px 10px;
+}
+
+nav h1 {
+    color: rgb(128, 0, 32);
+    margin-left: 20px;
+    float: left;
+}
+
+section {
+    background-color: #e4e7ba;
+    width: 75%;
+    float: left;
+}
+
+content {
+    background-color: #e4e7ba;
+    width: 100%;
+    float: left;
+}
+
+aside {
+    background-color: #cccfab;
+    width: 25%;
+    float: right;
+}
+
+    aside ul {
+        list-style-type: none;
+        padding: 0px 15px;
+    }
+
+    aside h3 {
+        padding: 0px 15px;
+    }
+
+    aside ol li:nth-child(odd) {
+        color: #04AA6D
+    }
+
+    aside ol li:nth-child(even) {
+        color: orange
+    }
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #9ea57d;
+    padding: 0 15px;
+}
+
+article {
+    padding: 10px 15px;
+}
+
+    article:nth-child(2) p:nth-child(3) {
+        font-weight: bold;
+        color: #9b4964;
+    }
+
+nav ul {
+    display: flex;
+}
+
+    nav ul li {
+        display: flex;
+        background-color: #838662;
+        padding: 10px 15px;
+        margin: 0 10px;
+        border-radius: 10px;
+    }
+
+.login {
+    margin-left: auto;
+    background-color: #838662;
+    padding: 10px 15px;
+    margin: 0 10px;
+    border-radius: 10px;
+}
+
+footer {
+    clear: both;
+    background-color: #9ea57d;
+    padding: 15px 15px;
+}
+
+a {
+    color: rgb(37, 37, 31);
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+}
+    /* unvisited link */
+    a:link {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+    }
+
+    /* mouse over link */
+    a:hover {
+        color: rgb(128, 0, 32);
+    }
+
+    /* selected link */
+    a:active {
+        color: rgb(37, 37, 31);
+    }
+
+input[type=button], input[type=submit] {
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 24px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input[type=reset] {
+    background-color: #aa0412;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 24px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input[type=text], input[type=password] {
+    border: 2px solid rgb(116, 60, 60);
+    border-radius: 4px;
+    padding: 8px 12px;
+}
+
+table {
+    width: 75%;
+    border: 5px white;
+}

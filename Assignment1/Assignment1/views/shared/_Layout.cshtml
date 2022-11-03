@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/stylesheet.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="logotype">
+            <h1>Niklas Bergh</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a asp-controller="Home" asp-action="Index">Index</a></li>
+            <li><a asp-controller="Home" asp-action="About">About</a></li>
+            <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+            <li><a asp-controller="Check" asp-action="CheckAge">Check Age</a></li>
+            <li><a asp-controller="Check" asp-action="SetSession">Set Session</a></li>
+            @if(Context.Session.GetString("Session") != null) 
+            {
+                <li><a asp-controller="Check" asp-action="GetSession">Get Session</a></li>
+            }
+        </ul>
+    </nav>
+    <main>
+         @RenderBody()
+    </main>
+    <footer>
+        <span>Copyright &copy; Niklas Bergh @DateTime.Now</span>
+    </footer>
+</body>
+</html>
