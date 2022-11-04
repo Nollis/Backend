@@ -18,17 +18,10 @@ namespace Assignment1.controllers
         [HttpPost]
         public IActionResult CheckTemp(int input)
         {
-            //if (input >= 18)
-            //{
-            //    ViewBag.Result = "You are old enough to vote!";
-            //}
-            //else
-            //{
-            //    ViewBag.Result = "You are not old enough to vote!";
-            //}
             ViewBag.Result = CheckModel.CheckTemp(input);
             return View();
         }
+
         public IActionResult SetSession()
         {
             return View();
