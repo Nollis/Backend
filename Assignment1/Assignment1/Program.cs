@@ -14,8 +14,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapControllerRoute(
-    name: "checkage",
-    pattern: "checkage",
+    name: "FeverCheck",
+    pattern: "FeverCheck",
     defaults: new { controller = "Check", action = "CheckTemp" });
 
 app.MapControllerRoute(
