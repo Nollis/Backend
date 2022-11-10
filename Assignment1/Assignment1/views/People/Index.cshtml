@@ -1,0 +1,46 @@
+﻿@model PersonDetailViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of People</h1>
+<p>
+    <a asp-action="Create">Add new person</a>
+</p>
+<h2>Show data as table:</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var person in Model.tempList) 
+        {
+            <tr>
+                <td>@person.Id</td>
+                <td>@person.Name</td>
+                <td>@person.Phone</td>
+                <td>@person.City</td>
+                <td><a asp-action="Delete" asp-route-id="@person.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Show data as partial:</h2>
+
+@foreach (var person in Model.tempList)
+{
+    <div>
+        <h6>Id</h6>
+        <h6>Name</h6>
+        <h6>Phone</h6>
+        <h6>City</h6>
+        <h6> </h6>
+    </div>
+    <partial name="_personPartial" model="person"/>
+}
