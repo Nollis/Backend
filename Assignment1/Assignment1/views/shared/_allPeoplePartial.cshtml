@@ -1,0 +1,12 @@
+﻿@model PersonDetailViewModel
+
+@foreach(var person in Model.tempList) 
+{
+    <div class="row">
+        <div class="col">@person.Id</div>
+        <div class="col">@person.Name</div>
+        <div class="col">@person.Phone</div>
+        <div class="col">@person.City</div>
+        <div class="col"><a asp-action="Delete" asp-controller="People" asp-route-id=@person.Id>Delete</a></div>
+    </div>
+}

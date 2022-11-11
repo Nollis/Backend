@@ -18,6 +18,29 @@ namespace Assignment1.controllers
             return View(vm);
         }
 
+        [HttpPost]
+        public IActionResult Index(string searchString)
+        {
+            if (PersonDetailViewModel.listOfPeople.Count == 0)
+                PersonDetailViewModel.GenaratePeople();
+
+            PersonDetailViewModel vm = new PersonDetailViewModel();
+
+            vm.tempList = PersonDetailViewModel.listOfPeople;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                return View(vm.tempList.Where(s => s.Name!.Contains(searchString) || searchString == null).ToList());
+            }
+            else
+            {
+                return View(vm.tempList.Where(s => s.City!.Contains(searchString) || searchString == null).ToList());
+            }
+
+
+            //return View(vm);
+        }
+
         public IActionResult Create()
         {
             return View();
@@ -26,9 +49,9 @@ namespace Assignment1.controllers
         [HttpPost]
         public IActionResult Create(PersonModel person)
         {
-            if (person != null)
+            person.Id = Guid.NewGuid().ToString();
+            if (person != null && ModelState.IsValid)
             {
-                person.Id = Guid.NewGuid().ToString();
                 PersonDetailViewModel.listOfPeople.Add(person);
             }
             return RedirectToAction("Index");

@@ -1,20 +1,48 @@
-﻿<label>Id for details:</label>
-<input type="text" id="id" name="id" />
-<button onclick="GetDetails()" id="details" type="submit">Details</button>
-<button onclick="DeletePerson()" id="delete" type="submit">Delete</button>
+﻿<div class="ajax-input">
+    <label>Show list of people:</label>
+    <button onclick="GetPeople()" id="people" type="submit">List People</button><br />
+</div>
+<div class="ajax-input">
+    <label>Id for details:</label>
+    <input type="text" id="id" name="id" />
+    <button onclick="GetDetails()" id="details" type="submit">Details</button>
+    <button onclick="DeletePerson()" id="delete" type="submit">Delete</button>
+</div>
 
 <div id="div-partial"></div>
 <div id="div-callout"></div>
 
 <script>
+    function GetPeople() {
+        $.ajax({
+            type: "GET",
+            url: "GetPeople",
+            success: function(response) {
+                $("#div-partial").html(response);
+            }
+        });
+    }
+
+    function DeletePerson() {
+        var inputId = $("#id").val();
+
+        $.ajax({
+            type: "POST",
+            url: "DeletePerson?id=" + inputId,
+            success: function(response) {
+                $("#div-callout").html("Person has been deleted");
+            }
+        });
+    }
+
     function GetDetails() {
-    var inputId = $("#id").val();
-    $.ajax({
-        type: "POST",
-        url: "Ajax/GetDetails?id=" + inputId,
-        success: function(response) {
-            $("#div-partial").html(response);
-        }
-    });
-}
+        var inputId = $("#id").val();
+        $.ajax({
+            type: "POST",
+            url: "GetDetails?id=" + inputId,
+            success: function(response) {
+                $("#div-partial").html(response);
+            }
+        });
+    }
 </script>

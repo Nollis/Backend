@@ -8,6 +8,7 @@ body {
 
 main {
     width: 1024px;
+    margin: 20px;
 }
 
 header {
@@ -100,6 +101,7 @@ footer {
     clear: both;
     background-color: #9ea57d;
     padding: 15px 15px;
+
 }
 
 a {
@@ -155,4 +157,40 @@ input[type=text], input[type=password] {
 table {
     width: 75%;
     border: 5px white;
+}
+
+
+.partial-category h6 {
+    float: left;
+    width:250px;
+}
+
+#div-callout {
+    background-color:palevioletred;
+    width: 300px;
+    padding: 20px;
+    margin-top:10px;
+}
+
+#div-partial {
+    background-color:beige;
+    width: 800px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.row {
+    clear: both;
+}
+
+.col {
+    padding: 10px;
+}
+
+.col2 {
+    float:left;
+}
+
+.ajax-input {
+    padding: 10px;
 }

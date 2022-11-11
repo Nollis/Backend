@@ -1,0 +1,18 @@
+﻿@model PersonDetailViewModel
+@{
+    ViewData["Title"] = "Filter";
+}
+
+<h2>Show data as partial:</h2>
+
+@foreach (var person in Model.tempList)
+{
+        <div class="partial-category">
+            <h6>Id</h6>
+            <h6>Name</h6>
+            <h6>Phone</h6>
+            <h6>City</h6>
+            <h6> </h6>
+        </div>
+        <partial name="_personPartial" model="person"/>
+}

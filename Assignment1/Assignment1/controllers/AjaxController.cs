@@ -6,6 +6,11 @@ namespace Assignment1.controllers
 {
     public class AjaxController : Controller
     {
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         public IActionResult ajaxIndex()
         {
             return View();
@@ -34,11 +39,14 @@ namespace Assignment1.controllers
 
         public IActionResult GetPeople()
         {
-            PersonDetailViewModel persons = new PersonDetailViewModel();
+            if (PersonDetailViewModel.listOfPeople.Count == 0)
+                PersonDetailViewModel.GenaratePeople();
 
-            persons.tempList = PersonDetailViewModel.listOfPeople;
+            PersonDetailViewModel vm = new PersonDetailViewModel();
 
-            return PartialView("_personPartial", persons);
+            vm.tempList = PersonDetailViewModel.listOfPeople;
+
+            return PartialView("_allPeoplePartial", vm);
         }
     }
 }

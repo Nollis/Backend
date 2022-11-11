@@ -7,6 +7,15 @@
 <p>
     <a asp-action="Create">Add new person</a>
 </p>
+
+<h1>Filter People</h1>
+<form asp-controller="People" asp-action="Index">
+    <p>
+        Name: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <h2>Show data as table:</h2>
 <table>
     <thead>
@@ -35,7 +44,7 @@
 
 @foreach (var person in Model.tempList)
 {
-    <div>
+    <div class="partial-category">
         <h6>Id</h6>
         <h6>Name</h6>
         <h6>Phone</h6>
