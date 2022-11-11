@@ -30,11 +30,11 @@ namespace Assignment1.controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                return View(vm.tempList.Where(s => s.Name!.Contains(searchString) || searchString == null).ToList());
+                return View(vm.tempList.Where(s => s.Name.Contains(searchString)));
             }
             else
             {
-                return View(vm.tempList.Where(s => s.City!.Contains(searchString) || searchString == null).ToList());
+                return View(vm.tempList.Where(s => s.City.Contains(searchString)));
             }
 
 
