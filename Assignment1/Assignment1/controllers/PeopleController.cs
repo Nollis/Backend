@@ -50,9 +50,18 @@ namespace Assignment1.controllers
         public IActionResult Create(PersonModel person)
         {
             person.Id = Guid.NewGuid().ToString();
-            if (person != null && ModelState.IsValid)
+
+            //var error = ModelState
+            //    .Where(x => x.Value.Errors.Count > 0)
+            //    .Select(x => new { x.Key, x.Value.Errors })
+            //    .ToArray();
+
+            if (person != null)
             {
-                PersonDetailViewModel.listOfPeople.Add(person);
+                if(ModelState.IsValid)
+                {
+                    PersonDetailViewModel.listOfPeople.Add(person);
+                }
             }
             return RedirectToAction("Index");
         }

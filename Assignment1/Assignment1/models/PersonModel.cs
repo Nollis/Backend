@@ -2,9 +2,16 @@
 
 namespace Assignment1.models
 {
+    public class PersonListModel
+    {
+        public string SearchText { get; set; }
+        public List<PersonModel> PersonModelList { get; set; }
+    }
+
     public class PersonModel
     {
-        public string Id { get; set; }
+        [Key]
+        public string? Id { get; set; }
 
         [Required]
         public string Name { get; set; }
