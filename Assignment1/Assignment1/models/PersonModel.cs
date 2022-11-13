@@ -1,13 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Assignment1.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace Assignment1.models
 {
-    public class PersonListModel
-    {
-        public string SearchText { get; set; }
-        public List<PersonModel> PersonModelList { get; set; }
-    }
-
     public class PersonModel
     {
         [Key]

@@ -21,24 +21,15 @@ namespace Assignment1.controllers
         [HttpPost]
         public IActionResult Index(string searchString)
         {
-            if (PersonDetailViewModel.listOfPeople.Count == 0)
-                PersonDetailViewModel.GenaratePeople();
-
-            PersonDetailViewModel vm = new PersonDetailViewModel();
-
-            vm.tempList = PersonDetailViewModel.listOfPeople;
+            var AllPeople = from p in PersonDetailViewModel.listOfPeople
+                            select p;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                return View(vm.tempList.Where(s => s.Name.Contains(searchString)));
-            }
-            else
-            {
-                return View(vm.tempList.Where(s => s.City.Contains(searchString)));
+                AllPeople = AllPeople.Where(s => s.Name.Contains(searchString));
             }
 
-
-            //return View(vm);
+            return View(AllPeople);
         }
 
         public IActionResult Create()
