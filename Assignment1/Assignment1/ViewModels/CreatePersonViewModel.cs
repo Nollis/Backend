@@ -1,12 +1,12 @@
-﻿using Assignment1.ViewModels;
+﻿using Assignment1.models;
 using System.ComponentModel.DataAnnotations;
 
-namespace Assignment1.models
+namespace Assignment1.ViewModels
 {
-    public class PersonModel
+    public class CreatePersonViewModel
     {
         [Key]
-        public string? Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         public string Name { get; set; }

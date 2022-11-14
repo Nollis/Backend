@@ -25,7 +25,6 @@
 
     function DeletePerson() {
         var inputId = $("#id").val();
-
         $.ajax({
             type: "POST",
             url: "DeletePerson?id=" + inputId,

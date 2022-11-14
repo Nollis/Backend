@@ -1,12 +1,10 @@
-﻿@model PersonDetailViewModel
+﻿@model PeopleViewModel
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>List of People</h1>
-<p>
-    <a asp-action="Create">Add new person</a>
-</p>
+<partial name="_createPersonPartial" model="Model.CreatePersonViewModel"/>
 
 <h1>Filter People</h1>
 <form asp-controller="People" asp-action="Index" method="post">

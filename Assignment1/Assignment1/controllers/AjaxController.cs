@@ -19,7 +19,7 @@ namespace Assignment1.controllers
         [HttpPost]
         public IActionResult GetDetails(string id)
         {
-            PersonModel person = PersonDetailViewModel.listOfPeople.FirstOrDefault(x=>x.Id == id);
+            Person person = PeopleViewModel.listOfPeople.FirstOrDefault(x=>x.Id == id);
 
             return PartialView("_personPartial", person);
         }
@@ -27,11 +27,11 @@ namespace Assignment1.controllers
         [HttpPost]
         public IActionResult DeletePerson(string id)
         {
-            PersonModel personToDelete = PersonDetailViewModel.listOfPeople.FirstOrDefault(x => x.Id == id);
+            Person personToDelete = PeopleViewModel.listOfPeople.FirstOrDefault(x => x.Id == id);
 
             if (personToDelete != null)
             {
-                PersonDetailViewModel.listOfPeople.Remove(personToDelete);
+                PeopleViewModel.listOfPeople.Remove(personToDelete);
             }
 
             return PartialView("_personPartial", personToDelete);
@@ -39,12 +39,12 @@ namespace Assignment1.controllers
 
         public IActionResult GetPeople()
         {
-            if (PersonDetailViewModel.listOfPeople.Count == 0)
-                PersonDetailViewModel.GenaratePeople();
+            if (PeopleViewModel.listOfPeople.Count == 0)
+                PeopleViewModel.GenaratePeople();
 
-            PersonDetailViewModel vm = new PersonDetailViewModel();
+            PeopleViewModel vm = new PeopleViewModel();
 
-            vm.tempList = PersonDetailViewModel.listOfPeople;
+            vm.tempList = PeopleViewModel.listOfPeople;
 
             return PartialView("_allPeoplePartial", vm);
         }

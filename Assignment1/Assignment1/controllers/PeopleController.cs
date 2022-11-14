@@ -8,12 +8,12 @@ namespace Assignment1.controllers
     {
         public IActionResult Index()
         {
-            if (PersonDetailViewModel.listOfPeople.Count == 0)
-                PersonDetailViewModel.GenaratePeople();
+            if (PeopleViewModel.listOfPeople.Count == 0)
+                PeopleViewModel.GenaratePeople();
 
-            PersonDetailViewModel vm = new PersonDetailViewModel();
+            PeopleViewModel vm = new PeopleViewModel();
 
-            vm.tempList = PersonDetailViewModel.listOfPeople;
+            vm.tempList = PeopleViewModel.listOfPeople;
 
             return View(vm);
         }
@@ -21,7 +21,7 @@ namespace Assignment1.controllers
         [HttpPost]
         public IActionResult Index(string searchString)
         {
-            var AllPeople = from p in PersonDetailViewModel.listOfPeople
+            var AllPeople = from p in PeopleViewModel.listOfPeople
                             select p;
 
             if (!String.IsNullOrEmpty(searchString))
@@ -38,31 +38,30 @@ namespace Assignment1.controllers
         }
 
         [HttpPost]
-        public IActionResult Create(PersonModel person)
+        public IActionResult Create(Person person)
         {
             person.Id = Guid.NewGuid().ToString();
 
-            //var error = ModelState
-            //    .Where(x => x.Value.Errors.Count > 0)
-            //    .Select(x => new { x.Key, x.Value.Errors })
-            //    .ToArray();
+            ModelState.Remove("Id");
 
-            if (person != null)
+            if(ModelState.IsValid)
             {
-                if(ModelState.IsValid)
-                {
-                    PersonDetailViewModel.listOfPeople.Add(person);
-                }
+                PeopleViewModel.listOfPeople.Add(person);
             }
+            else
+            {
+                return View();
+            }
+
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(string id)
         {
-            var personToDelete = PersonDetailViewModel.listOfPeople.FirstOrDefault(x => x.Id == id);
+            var personToDelete = PeopleViewModel.listOfPeople.FirstOrDefault(x => x.Id == id);
             if (personToDelete != null)
             {
-                PersonDetailViewModel.listOfPeople.Remove(personToDelete);
+                PeopleViewModel.listOfPeople.Remove(personToDelete);
             }
             return RedirectToAction("Index");
         }
