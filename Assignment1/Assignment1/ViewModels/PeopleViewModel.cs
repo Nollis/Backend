@@ -11,7 +11,7 @@ namespace Assignment1.ViewModels
 
         public List<Person> tempList = new List<Person>();
 
-        //public Person person { get; set; }
+        public static string searchString { get; set; }
 
         public CreatePersonViewModel CreatePersonViewModel { get; set; }
 

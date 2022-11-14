@@ -29,7 +29,7 @@ namespace Assignment1.controllers
                 AllPeople = AllPeople.Where(s => s.Name.Contains(searchString));
             }
 
-            return View(AllPeople);
+            return View(AllPeople.ToList());
         }
 
         public IActionResult Create()
