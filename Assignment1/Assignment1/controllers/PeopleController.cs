@@ -21,15 +21,16 @@ namespace Assignment1.controllers
         [HttpPost]
         public IActionResult Index(string searchString)
         {
-            var AllPeople = from p in PeopleViewModel.listOfPeople
-                            select p;
+            searchString = searchString.ToLower();
 
+           PeopleViewModel vm = new PeopleViewModel();
+            var AllPeople = from p in PeopleViewModel.listOfPeople
+                 select p;
             if (!String.IsNullOrEmpty(searchString))
             {
-                AllPeople = AllPeople.Where(s => s.Name.Contains(searchString));
+                vm.tempList = AllPeople.Where(s => s.Name.ToLower().Contains(searchString)).ToList();
             }
-
-            return View(AllPeople.ToList());
+            return View(vm);
         }
 
         public IActionResult Create()
@@ -50,7 +51,7 @@ namespace Assignment1.controllers
             }
             else
             {
-                return View();
+                return RedirectToAction("Index");
             }
 
             return RedirectToAction("Index");

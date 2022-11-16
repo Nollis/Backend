@@ -11,7 +11,14 @@ namespace Assignment1.ViewModels
 
         public List<Person> tempList = new List<Person>();
 
-        public static string searchString { get; set; }
+        public string searchString { get; set; }
+
+        public static List<Person> Search(string searchString, List<Person> listToFilter)
+        {
+            searchString = searchString.ToLower();
+            var listToSend = listToFilter.FindAll(x => x.Name.ToLower().Contains(searchString) || x.City.ToLower().Contains(searchString));
+            return listToSend;
+        }
 
         public CreatePersonViewModel CreatePersonViewModel { get; set; }
 
