@@ -3,6 +3,7 @@ using Assignment1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221117112620_Added Country and seeded a country")]
+    partial class AddedCountryandseededacountry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,30 +22,6 @@ namespace Assignment1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("Assignment1.Models.City", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cities");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Göteborg"
-                        });
-                });
 
             modelBuilder.Entity("Assignment1.Models.Country", b =>
                 {
@@ -93,21 +71,21 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5cefa1a2-df78-4c17-8d20-41cff0d60e33",
+                            Id = "df43e1ff-4cf3-4e35-a53f-5ab1ff517ee1",
                             City = "Göteborg",
                             Name = "Niklas Bergh",
                             Phone = "031-123456"
                         },
                         new
                         {
-                            Id = "37ecb845-312e-4c2a-bd07-0e86de444125",
+                            Id = "9ffe1dda-8b59-451e-a90f-d8a294a5eb95",
                             City = "Mölndal",
                             Name = "Greger Puff",
                             Phone = "031-666666"
                         },
                         new
                         {
-                            Id = "38618de8-7060-4e4f-8f62-c0b3ca7ee304",
+                            Id = "a20027c1-32b7-4d7b-9a5f-5ebbf1f58780",
                             City = "Falsterbo",
                             Name = "The Dude",
                             Phone = "0707985544"

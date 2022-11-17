@@ -1,0 +1,31 @@
+﻿@model List<Person>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div><a asp-action="Create" class="btn">Create a new person</a></div>
+
+<h1>List of people</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var person in Model) 
+        {
+            <tr>
+                <td>@person.Id</td>
+                <td>@person.Name</td>
+                <td>@person.Phone</td>
+                <td>@person.City</td>
+                <td><a asp-action="Delete" asp-route-id="@person.Id class="btn">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

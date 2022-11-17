@@ -1,4 +1,5 @@
 ﻿using Assignment1.models;
+using Assignment1.Models;
 using Assignment1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
