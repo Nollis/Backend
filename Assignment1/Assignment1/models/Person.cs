@@ -13,5 +13,7 @@ namespace Assignment1.Models
         public string Phone { get; set; }
 
         public string City { get; set; }
+
+        public List<Country> Countrys { get; set; } = new List<Country>();
     }
 }

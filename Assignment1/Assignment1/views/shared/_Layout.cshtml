@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <link rel="stylesheet" href="~/stylesheet.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/bootstrap.min.css" asp-append-version="true" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 </head>
@@ -27,6 +27,7 @@
             <li><a asp-controller="PeopleDB" asp-action="Index">PeopleDB</a></li>
             <li><a asp-controller="CountryDB" asp-action="Index">CountryDB</a></li>
             <li><a asp-controller="CityDb" asp-action="Index">CityDB</a></li>
+            <li><a asp-controller="PersonCountryDb" asp-action="AddCountryToPerson">Add nationality to person</a></li>
         </ul>
     </nav>
     <main>

@@ -3,6 +3,7 @@ using Assignment1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221118144819_Added many to many between Person and Country")]
+    partial class AddedmanytomanybetweenPersonandCountry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,21 +95,21 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e80868c0-82d7-4781-9924-07583898220d",
+                            Id = "388c7db7-7337-44ad-bcbc-1480893d679b",
                             City = "Göteborg",
                             Name = "Niklas Bergh",
                             Phone = "031-123456"
                         },
                         new
                         {
-                            Id = "72e372ce-2dc9-47cd-984a-c3ade927f550",
+                            Id = "3118b8c8-324c-4ac1-94cb-9f751ffda349",
                             City = "Mölndal",
                             Name = "Greger Puff",
                             Phone = "031-666666"
                         },
                         new
                         {
-                            Id = "8eaba12c-753b-494d-91b4-0bcc8b9add15",
+                            Id = "d2502772-6e13-4562-82a6-a7b18078f9ac",
                             City = "Falsterbo",
                             Name = "The Dude",
                             Phone = "0707985544"
@@ -127,13 +129,6 @@ namespace Assignment1.Migrations
                     b.HasIndex("PeopleId");
 
                     b.ToTable("CountryPerson");
-
-                    b.HasData(
-                        new
-                        {
-                            CountrysId = 1,
-                            PeopleId = "e80868c0-82d7-4781-9924-07583898220d"
-                        });
                 });
 
             modelBuilder.Entity("CountryPerson", b =>
