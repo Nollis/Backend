@@ -1,5 +1,4 @@
-﻿using Assignment1.models;
-using Assignment1.Models;
+﻿using Assignment1.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Assignment1.Data
@@ -27,18 +26,18 @@ namespace Assignment1.Data
 
             var personId = Guid.NewGuid().ToString();
 
-            modelbuilder.Entity<Person>().HasData(new Person { Id = personId, Name = "Niklas Bergh", Phone = "031-123456", City = "Göteborg" });
-            modelbuilder.Entity<Person>().HasData(new Person { Id = Guid.NewGuid().ToString(), Name = "Greger Puff", Phone = "031-666666", City = "Mölndal" });
-            modelbuilder.Entity<Person>().HasData(new Person { Id = Guid.NewGuid().ToString(), Name = "The Dude", Phone = "0707985544", City = "Falsterbo" });
+            modelbuilder.Entity<Person>().HasData(new Person { Id = personId, Name = "Niklas Bergh", Phone = "031-123456" });
+            modelbuilder.Entity<Person>().HasData(new Person { Id = Guid.NewGuid().ToString(), Name = "Greger Puff", Phone = "031-666666" });
+            modelbuilder.Entity<Person>().HasData(new Person { Id = Guid.NewGuid().ToString(), Name = "The Dude", Phone = "0707985544" });
 
             modelbuilder.Entity<Country>().HasData(new Country { Id = 1, Name = "Sweden" });
 
             modelbuilder.Entity<City>().HasData(new City { Id = 1, Name = "Göteborg" });
 
             modelbuilder.Entity<Person>()
-                .HasMany(p => p.Countrys)
+                .HasMany(p => p.Cities)
                 .WithMany(c => c.People)
-                .UsingEntity(j => j.HasData(new { PeopleId = personId, CountrysId = 1 }));
+                .UsingEntity(j => j.HasData(new { PeopleId = personId, CitiesId = 1 }));
 
 
         }

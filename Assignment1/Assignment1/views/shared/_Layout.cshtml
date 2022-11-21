@@ -7,35 +7,41 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <div class="container-xl">
+    <header>
     <div class="logotype">
             <h1>Niklas Bergh</h1>
     </div>
-    <nav>
-        <ul>
-            <li><a asp-controller="Home" asp-action="Index">Index</a></li>
-            @*<li><a asp-controller="Home" asp-action="About">About</a></li>
-            <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>*@
-            <li><a asp-controller="Check" asp-action="CheckTemp">Check Temperature</a></li>
-            <li><a asp-controller="Guess" asp-action="NumbGuess">Guess Number</a></li>
-            <li><a asp-controller="Check" asp-action="SetSession">Set Session</a></li>
-            @if(Context.Session.GetString("Session") != null) 
-            {
-                <li><a asp-controller="Check" asp-action="GetSession">Get Session</a></li>
-            }
-            <li><a asp-controller="People" asp-action="Index">People</a></li>
-            <li><a asp-controller="Ajax" asp-action="ajaxIndex">Ajax</a></li>
-            <li><a asp-controller="PeopleDB" asp-action="Index">PeopleDB</a></li>
-            <li><a asp-controller="CountryDB" asp-action="Index">CountryDB</a></li>
-            <li><a asp-controller="CityDb" asp-action="Index">CityDB</a></li>
-            <li><a asp-controller="PersonCountryDb" asp-action="AddCountryToPerson">Add nationality to person</a></li>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="Home" asp-action="Index">Index</a></li>
+            @*<li class="nav-item"><a class="nav-link text-dark"  asp-controller="Home" asp-action="About">About</a></li>
+            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="Home" asp-action="Contact">Contact</a></li>*@
+            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="Check" asp-action="CheckTemp">Check Temperature</a></li>
+            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="Guess" asp-action="NumbGuess">Guess Number</a></li>
+            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="Check" asp-action="SetSession">Set Session</a></li>
+                    @if (Context.Session.GetString("Session") != null)
+                    {
+                            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="Check" asp-action="GetSession">Get Session</a></li>
+                    }
+            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="People" asp-action="Index">People</a></li>
+            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="Ajax" asp-action="ajaxIndex">Ajax</a></li>
+            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="PeopleDB" asp-action="Index">PeopleDB</a></li>
+            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="CountryDB" asp-action="Index">CountryDB</a></li>
+            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="CityDb" asp-action="Index">CityDB</a></li>
+            <li class="nav-item"><a class="nav-link text-dark"  asp-controller="PersonCityDb" asp-action="AddCityToPerson">Add city to person</a></li>
         </ul>
+        </div>
     </nav>
-    <main>
-         @RenderBody()
+    </header>
+    <main class="container-fluid">
+        @RenderBody()
     </main>
-    <footer>
+    <footer class="container-fluid">
         <span>Copyright &copy; Niklas Bergh @DateTime.Now</span>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    </div>
 </body>
 </html>

@@ -35,14 +35,13 @@ namespace Assignment1.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
         public IActionResult Delete(int Id)
         {
-            var cityToRemove = _context.Countries.Find(Id);
+            var cityToRemove = _context.Cities.Find(Id);
 
             if (cityToRemove != null)
             {
-                _context.Countries.Remove(cityToRemove);
+                _context.Cities.Remove(cityToRemove);
                 _context.SaveChanges(true);
             }
 

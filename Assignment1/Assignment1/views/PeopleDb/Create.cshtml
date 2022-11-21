@@ -1,11 +1,14 @@
 ﻿@model Person
+@{
+    ViewData["Title"] = "Create";
+}
 
-<form asp-action="Create" asp-controller="People" method="post">
+<h1>Add a Person</h1>
+
+<form asp-action="Create" asp-controller="PeopleDB" method="post">
     <label asp-for="Name"></label>
     <input asp-for="Name" />
     <label asp-for="Phone"></label>
     <input asp-for="Phone" />
-    <label asp-for="Cities"></label>
-    <input asp-for="Cities" />
     <input type="submit" value="Create" />
 </form>

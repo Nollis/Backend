@@ -35,7 +35,6 @@ namespace Assignment1.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
         public IActionResult Delete(int Id)
         {
             var countryToRemove = _context.Countries.Find(Id);

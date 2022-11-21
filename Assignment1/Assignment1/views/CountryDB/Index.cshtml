@@ -5,7 +5,7 @@
 
 <h1>List of Countries</h1>
 
-<div><a asp-action="Create" class=" btn">Add a Country</a></div>
+<div><a class="btn btn-primary" asp-action="Create" class=" btn">Add a Country</a></div>
 
 <table class="table">
     <thead>
@@ -20,7 +20,7 @@
                 <tr>
                     <td>@country.Id</td>
                     <td>@country.Name</td>
-                    <td><a asp-action="Delete" asp-route-id="@country.Id">Delete</a></td>
+                    <td><a asp-action="Delete" asp-route-id=@country.Id class="btn btn-danger">Delete</a></td>
                 </tr>
         }
     </tbody>
