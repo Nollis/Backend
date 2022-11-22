@@ -15,7 +15,5 @@ namespace Assignment1.Models
         public int CityId { get; set; }
 
         public City City { get; set; }
-
-        //public List<City> Cities { get; set; } = new List<City>();
     }
 }

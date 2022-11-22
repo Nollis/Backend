@@ -1,7 +1,8 @@
-﻿using Assignment1.models;
+﻿using Assignment1.Data;
 using Assignment1.Models;
 using Assignment1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment1.controllers
 {

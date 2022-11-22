@@ -37,14 +37,6 @@ namespace Assignment1.Data
             modelbuilder.Entity<City>().HasData(new City { CityId = 1, CountryId = 1, CityName = "Göteborg" });
             modelbuilder.Entity<City>().HasData(new City { CityId = 2, CountryId = 1, CityName = "Stockholm" });
 
-            modelbuilder.Entity<City>()
-                .HasMany(p => p.People)
-                .WithOne(c => c.City)
-                .HasForeignKey(b => b.CityId)
-                .IsRequired(false);
-
-
-
         }
     }
 }

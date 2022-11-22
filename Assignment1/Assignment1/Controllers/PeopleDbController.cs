@@ -24,25 +24,35 @@ namespace Assignment1.controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Person person)
+        public IActionResult Create(Person person, int cityId)
         {
+            person.PersonId = Guid.NewGuid().ToString();
+
+            var city = _context.Cities.Find(cityId);
+            person.City = city;
+
             if (ModelState.IsValid)
             {
                 _context.People.Add(person);
                 _context.SaveChanges();
             }
+            else
+            {
+                return View();
+            }
 
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(Person person, int cityId)
         {
-            var personToRemove = _context.People.Find(Id);
+            var personToRemove = _context.Cities.Find(cityId);
+            person.City = personToRemove;
 
             if (personToRemove != null)
             {
-                _context.People.Remove(personToRemove);
-                _context.SaveChanges(true);
+                _context.People.Remove(person);
+                _context.SaveChanges();
             }
 
             return RedirectToAction("Index");
