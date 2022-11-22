@@ -3,6 +3,7 @@ using Assignment1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221122131401_Added new one to many connections")]
+    partial class Addednewonetomanyconnections
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,21 +108,21 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            PersonId = "1a4e3409-f9d6-4792-a9c0-e077a54ce886",
+                            PersonId = "8df43ec8-f2da-4667-b58d-a9220e194278",
                             CityId = 1,
                             Name = "Niklas Bergh",
                             Phone = "031-123456"
                         },
                         new
                         {
-                            PersonId = "7ebbfe68-5b28-4c98-8295-93f5dc898963",
+                            PersonId = "ba2ee2c3-b418-46a0-8f15-cf1bbdece9d1",
                             CityId = 2,
                             Name = "Greger Puff",
                             Phone = "031-666666"
                         },
                         new
                         {
-                            PersonId = "39638a1e-8942-46cf-8458-35d4e3191ba6",
+                            PersonId = "8bf29d56-8281-4c51-bc17-e45496169f13",
                             CityId = 2,
                             Name = "The Dude",
                             Phone = "0707985544"

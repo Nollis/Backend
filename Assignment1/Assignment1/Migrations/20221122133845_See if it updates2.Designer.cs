@@ -3,6 +3,7 @@ using Assignment1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221122133845_See if it updates2")]
+    partial class Seeifitupdates2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,21 +108,21 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            PersonId = "1a4e3409-f9d6-4792-a9c0-e077a54ce886",
+                            PersonId = "f1b5f938-a425-49be-8e3c-154ccc673328",
                             CityId = 1,
                             Name = "Niklas Bergh",
                             Phone = "031-123456"
                         },
                         new
                         {
-                            PersonId = "7ebbfe68-5b28-4c98-8295-93f5dc898963",
+                            PersonId = "c1234332-2a31-4f39-b9fe-96b9af827420",
                             CityId = 2,
                             Name = "Greger Puff",
                             Phone = "031-666666"
                         },
                         new
                         {
-                            PersonId = "39638a1e-8942-46cf-8458-35d4e3191ba6",
+                            PersonId = "5cc3278b-265a-4dd7-ac3b-38f0861e69fc",
                             CityId = 2,
                             Name = "The Dude",
                             Phone = "0707985544"
