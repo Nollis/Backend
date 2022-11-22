@@ -1,6 +1,7 @@
 ﻿using Assignment1.Data;
 using Assignment1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Assignment1.Controllers
 {
@@ -20,6 +21,7 @@ namespace Assignment1.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Countries = new SelectList(_context.Countries, "CountryId", "CountryName");
             return View();
         }
 

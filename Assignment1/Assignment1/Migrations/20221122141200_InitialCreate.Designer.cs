@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221122133845_See if it updates2")]
-    partial class Seeifitupdates2
+    [Migration("20221122141200_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -108,21 +108,21 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            PersonId = "f1b5f938-a425-49be-8e3c-154ccc673328",
+                            PersonId = "731eb0e2-3be0-4efe-ba59-6090251a30f2",
                             CityId = 1,
                             Name = "Niklas Bergh",
                             Phone = "031-123456"
                         },
                         new
                         {
-                            PersonId = "c1234332-2a31-4f39-b9fe-96b9af827420",
+                            PersonId = "e96cbc49-c6de-4028-a42b-2c9e20fcf5c4",
                             CityId = 2,
                             Name = "Greger Puff",
                             Phone = "031-666666"
                         },
                         new
                         {
-                            PersonId = "5cc3278b-265a-4dd7-ac3b-38f0861e69fc",
+                            PersonId = "ac474b7c-1baa-429a-8cd6-6fc5fe406e1e",
                             CityId = 2,
                             Name = "The Dude",
                             Phone = "0707985544"

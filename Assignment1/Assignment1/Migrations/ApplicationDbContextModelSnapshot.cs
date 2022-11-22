@@ -106,21 +106,21 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            PersonId = "1a4e3409-f9d6-4792-a9c0-e077a54ce886",
+                            PersonId = "731eb0e2-3be0-4efe-ba59-6090251a30f2",
                             CityId = 1,
                             Name = "Niklas Bergh",
                             Phone = "031-123456"
                         },
                         new
                         {
-                            PersonId = "7ebbfe68-5b28-4c98-8295-93f5dc898963",
+                            PersonId = "e96cbc49-c6de-4028-a42b-2c9e20fcf5c4",
                             CityId = 2,
                             Name = "Greger Puff",
                             Phone = "031-666666"
                         },
                         new
                         {
-                            PersonId = "39638a1e-8942-46cf-8458-35d4e3191ba6",
+                            PersonId = "ac474b7c-1baa-429a-8cd6-6fc5fe406e1e",
                             CityId = 2,
                             Name = "The Dude",
                             Phone = "0707985544"
