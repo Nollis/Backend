@@ -26,8 +26,13 @@ namespace Assignment1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(City city)
+        public IActionResult Create(City city, int countryId)
         {
+            var country = _context.Countries.Find(countryId);
+            city.CountryId = country.CountryId;
+
+            ModelState.Remove("Country");
+
             if (ModelState.IsValid)
             {
                 _context.Cities.Add(city);
@@ -37,9 +42,9 @@ namespace Assignment1.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int cityId)
         {
-            var cityToRemove = _context.Cities.Find(Id);
+            var cityToRemove = _context.Cities.Find(cityId);
 
             if (cityToRemove != null)
             {

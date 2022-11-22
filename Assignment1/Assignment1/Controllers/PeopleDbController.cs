@@ -31,7 +31,10 @@ namespace Assignment1.controllers
             person.PersonId = Guid.NewGuid().ToString();
 
             var city = _context.Cities.Find(cityId);
-            person.City = city;
+            person.CityId = city.CityId;
+
+            ModelState.Remove("PersonId");
+            ModelState.Remove("City");
 
             if (ModelState.IsValid)
             {
@@ -46,14 +49,13 @@ namespace Assignment1.controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(Person person, int cityId)
+        public IActionResult Delete(string personId)
         {
-            var personToRemove = _context.Cities.Find(cityId);
-            person.City = personToRemove;
+            var personToRemove = _context.People.Find(personId);
 
             if (personToRemove != null)
             {
-                _context.People.Remove(person);
+                _context.People.Remove(personToRemove);
                 _context.SaveChanges();
             }
 
