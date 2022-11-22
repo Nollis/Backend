@@ -47,7 +47,7 @@ namespace Assignment1.Controllers
             {
                 ViewBag.People = new SelectList(_context.People, "Id", "Name");
                 ViewBag.Cities = new SelectList(_context.Cities.Where(x=>x.CityId != cityId), "Id", "Name");
-                ViewBag.Message = "You already added this Country to this person.";
+                ViewBag.Message = "You already added this City to this person.";
                 return View();
             }
 
