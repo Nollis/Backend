@@ -28,11 +28,11 @@
         @foreach(var person in Model.tempList) 
         {
             <tr>
-                <td>@person.Id</td>
+                <td>@person.PersonId</td>
                 <td>@person.Name</td>
                 <td>@person.Phone</td>
-                    <td>@person.Cities</td>
-                <td><a asp-action="Delete" asp-route-id="@person.Id">Delete</a></td>
+                        <td>@person.City</td>
+                <td><a asp-action="Delete" asp-route-id="@person.PersonId">Delete</a></td>
             </tr>
         }
     </tbody>

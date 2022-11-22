@@ -22,12 +22,12 @@
         @foreach(var person in Model) 
         {
             <tr>
-                <td>@person.Id</td>
+                <td>@person.PersonId</td>
                 <td>@person.Name</td>
                 <td>@person.Phone</td>
-                <td>@person.Cities</td>
-                <td><a asp-action="Delete" asp-route-id="@person.Id class="btn">Delete</a></td>
-                <td><a asp-controller="PersonCityDb" asp-action="Index" class="btn" asp-route-id=@person.Id>City connection</a></td>
+                    <td>@person.City</td>
+                <td><a asp-action="Delete" asp-route-id="@person.PersonId class="btn">Delete</a></td>
+                <td><a asp-controller="PersonCityDb" asp-action="Index" class="btn" asp-route-id=@person.PersonId>City connection</a></td>
             </tr>
         }
     </tbody>

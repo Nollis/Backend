@@ -16,12 +16,12 @@ namespace Assignment1.Controllers
         }
         public IActionResult Index(string id)
         {
-            var person = _context.People.Include(x=>x.Cities).FirstOrDefault(x=>x.Id == id);
+            var person = _context.People.Include(x=>x.City).FirstOrDefault(x=>x.PersonId == id);
 
             ViewBag.Name = person.Name;
-            ViewBag.PersonId = person.Id;
+            ViewBag.PersonId = person.PersonId;
 
-            return View(person.Cities);
+            return View(person.City);
         }
 
         public IActionResult AddCountryToPerson()
@@ -35,18 +35,18 @@ namespace Assignment1.Controllers
         [HttpPost]
         public IActionResult AddCityToPerson(string personId, int cityId)
         {
-            var person = _context.People.Include(x => x.Cities).FirstOrDefault(x => x.Id == personId);
+            var person = _context.People.Include(x => x.City).FirstOrDefault(x => x.PersonId == personId);
             var city = _context.Cities.Find(cityId);
 
-            if(!person.Cities.Any(c=>c.Id == city.Id))
+            if(!person.City.CityId.Equals(city.CityId))
             {
-                person.Cities.Add(city);
+                _context.Cities.Add(person);
                 _context.SaveChanges();
             }
             else
             {
                 ViewBag.People = new SelectList(_context.People, "Id", "Name");
-                ViewBag.Countries = new SelectList(_context.Countries.Where(x=>x.Id != cityId), "Id", "Name");
+                ViewBag.Cities = new SelectList(_context.Cities.Where(x=>x.CityId != cityId), "Id", "Name");
                 ViewBag.Message = "You already added this Country to this person.";
                 return View();
             }
@@ -56,10 +56,10 @@ namespace Assignment1.Controllers
 
         public IActionResult RemoveCityfromPerson(string personId, int cityId)
         {
-            var person = _context.People.Include(x => x.Cities).FirstOrDefault(x => x.Id == personId);
+            var person = _context.People.Include(x => x.City).FirstOrDefault(x => x.PersonId == personId);
             var cityToRemove = _context.Cities.Find(cityId);
 
-            person.Cities.Remove(cityToRemove);
+            person.City.Remove(cityToRemove);
             _context.SaveChanges();
 
             return RedirectToAction("Index", new { id = personId });

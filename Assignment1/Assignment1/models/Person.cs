@@ -6,13 +6,16 @@ namespace Assignment1.Models
     public class Person
     {
         [Key]
-        public string Id { get; set; }
+        public string PersonId { get; set; }
 
         public string Name { get; set; }
 
         public string Phone { get; set; }
 
-        //public City City { get; set; }
-        public virtual ICollection<City> Cities { get; set; }
+        public int CityId { get; set; }
+
+        public City City { get; set; }
+
+        //public List<City> Cities { get; set; } = new List<City>();
     }
 }
