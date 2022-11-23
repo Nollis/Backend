@@ -47,10 +47,5 @@ namespace Assignment1.Data
                 .UsingEntity(j => j.HasData(new { CountryId = 1, LanguageId = 1 }));
 
         }
-
-        public static implicit operator ApplicationDbContext(LanguageDbController v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
