@@ -1,0 +1,34 @@
+﻿@model List<Language>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (Model.Count() != 0)
+{
+     <h1>Languages spoken in @ViewBag.CountryName</h1>
+
+     <table class="table">
+         <thead>
+             <tr>
+                 <th>Language Id</th>
+                 <th>Language</th>
+                 <th> </th>
+             </tr>
+         </thead>
+         <tbody>
+            @foreach (var language in Model)
+            {
+                <tr>
+                    <td>@language.LanguageId</td>
+                    <td>@language.LanguageName</td>
+                    <td><a asp-action="RemoveLanguageFromCountry" class="btn btn-danger" asp-route-countryid=@ViewBag.CountryId asp-route-languageid=@language.LanguageId>Remove language</a> </td>
+                </tr>
+            }
+            </tbody>
+     </table>
+
+}
+else
+{
+    <h1>@ViewBag.CountryName does not have any languages!</h1>
+}

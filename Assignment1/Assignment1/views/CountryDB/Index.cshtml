@@ -12,7 +12,8 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th></th>
+            <th> </th>
+            <th> </th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,7 @@
                     <td>@country.CountryId</td>
                     <td>@country.CountryName</td>
                     <td><a asp-action="Delete" asp-route-countryid=@country.CountryId class="btn btn-danger">Delete</a></td>
+                    <td><a asp-controller="CountryLanguageDb" asp-action="Index" asp-route-countryid=@country.CountryId class="btn btn-primary">Languages</a></td>
                 </tr>
         }
     </tbody>

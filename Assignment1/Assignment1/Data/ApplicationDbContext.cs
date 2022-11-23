@@ -1,4 +1,5 @@
-﻿using Assignment1.Models;
+﻿using Assignment1.Controllers;
+using Assignment1.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Reflection.Emit;
@@ -21,6 +22,7 @@ namespace Assignment1.Data
         public DbSet<Person> People { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<Language> Languages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
@@ -34,9 +36,21 @@ namespace Assignment1.Data
 
             modelbuilder.Entity<Country>().HasData(new Country { CountryId = 1, CountryName = "Sweden" });
 
+            modelbuilder.Entity<Language>().HasData(new Language { LanguageId = 1, LanguageName = "Swedish" });
+
             modelbuilder.Entity<City>().HasData(new City { CityId = 1, CountryId = 1, CityName = "Göteborg" });
             modelbuilder.Entity<City>().HasData(new City { CityId = 2, CountryId = 1, CityName = "Stockholm" });
 
+            modelbuilder.Entity<Country>()
+                .HasMany(l => l.Languages)
+                .WithMany(c => c.Countries)
+                .UsingEntity(j => j.HasData(new { CountryId = 1, LanguageId = 1 }));
+
+        }
+
+        public static implicit operator ApplicationDbContext(LanguageDbController v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
