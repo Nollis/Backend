@@ -4,7 +4,7 @@
 
 namespace Assignment1.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,6 +19,19 @@ namespace Assignment1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Countries", x => x.CountryId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Languages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LanguageName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Languages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -45,14 +58,14 @@ namespace Assignment1.Migrations
                 name: "People",
                 columns: table => new
                 {
-                    PersonId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CityId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_People", x => x.PersonId);
+                    table.PrimaryKey("PK_People", x => x.Id);
                     table.ForeignKey(
                         name: "FK_People_Cities_CityId",
                         column: x => x.CityId,
@@ -61,10 +74,39 @@ namespace Assignment1.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "LanguagePerson",
+                columns: table => new
+                {
+                    LanguagesId = table.Column<int>(type: "int", nullable: false),
+                    PeopleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LanguagePerson", x => new { x.LanguagesId, x.PeopleId });
+                    table.ForeignKey(
+                        name: "FK_LanguagePerson_Languages_LanguagesId",
+                        column: x => x.LanguagesId,
+                        principalTable: "Languages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LanguagePerson_People_PeopleId",
+                        column: x => x.PeopleId,
+                        principalTable: "People",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Countries",
                 columns: new[] { "CountryId", "CountryName" },
                 values: new object[] { 1, "Sweden" });
+
+            migrationBuilder.InsertData(
+                table: "Languages",
+                columns: new[] { "Id", "LanguageName" },
+                values: new object[] { 1, "Swedish" });
 
             migrationBuilder.InsertData(
                 table: "Cities",
@@ -78,23 +120,33 @@ namespace Assignment1.Migrations
 
             migrationBuilder.InsertData(
                 table: "People",
-                columns: new[] { "PersonId", "CityId", "Name", "Phone" },
-                values: new object[] { "731eb0e2-3be0-4efe-ba59-6090251a30f2", 1, "Niklas Bergh", "031-123456" });
+                columns: new[] { "Id", "CityId", "Name", "Phone" },
+                values: new object[] { "9a93fdd7-6cf5-4d5f-9c77-09903ddf06f3", 2, "Greger Puff", "031-666666" });
 
             migrationBuilder.InsertData(
                 table: "People",
-                columns: new[] { "PersonId", "CityId", "Name", "Phone" },
-                values: new object[] { "ac474b7c-1baa-429a-8cd6-6fc5fe406e1e", 2, "The Dude", "0707985544" });
+                columns: new[] { "Id", "CityId", "Name", "Phone" },
+                values: new object[] { "b4690a49-42cd-40b1-ab1b-9d7c178d2d80", 2, "The Dude", "0707985544" });
 
             migrationBuilder.InsertData(
                 table: "People",
-                columns: new[] { "PersonId", "CityId", "Name", "Phone" },
-                values: new object[] { "e96cbc49-c6de-4028-a42b-2c9e20fcf5c4", 2, "Greger Puff", "031-666666" });
+                columns: new[] { "Id", "CityId", "Name", "Phone" },
+                values: new object[] { "dceae8c6-857c-41a8-9b38-77c55afe9d33", 1, "Niklas Bergh", "031-123456" });
+
+            migrationBuilder.InsertData(
+                table: "LanguagePerson",
+                columns: new[] { "LanguagesId", "PeopleId" },
+                values: new object[] { 1, "dceae8c6-857c-41a8-9b38-77c55afe9d33" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cities_CountryId",
                 table: "Cities",
                 column: "CountryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LanguagePerson_PeopleId",
+                table: "LanguagePerson",
+                column: "PeopleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_People_CityId",
@@ -104,6 +156,12 @@ namespace Assignment1.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "LanguagePerson");
+
+            migrationBuilder.DropTable(
+                name: "Languages");
+
             migrationBuilder.DropTable(
                 name: "People");
 

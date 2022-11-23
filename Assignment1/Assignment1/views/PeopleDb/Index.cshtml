@@ -14,18 +14,20 @@
             <th>Name</th>
             <th>Phone</th>
             <th>City</th>
-            <th></th>
+            <th> </th>
+            <th> </th>
         </tr>
     </thead>
     <tbody>
         @foreach(var person in Model) 
         {
             <tr>
-                <td>@person.PersonId</td>
+                <td>@person.Id</td>
                 <td>@person.Name</td>
                 <td>@person.Phone</td>
                 <td>@person.City</td>
-                <td><a asp-action="Delete" asp-route-personid=@person.PersonId class="btn btn-danger">Delete</a></td>
+                <td><a asp-action="Delete" asp-route-personid=@person.Id class="btn btn-danger">Delete</a></td>
+                <td><a asp-controller="PersonLanguageDb" asp-action="Index" asp-route-personid=@person.Id class="btn btn-primary">Languages</a></td>
             </tr>
         }
     </tbody>

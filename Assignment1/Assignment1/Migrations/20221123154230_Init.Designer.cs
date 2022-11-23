@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221122141200_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221123154230_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,9 +83,33 @@ namespace Assignment1.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Assignment1.Models.Language", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("LanguageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Languages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LanguageName = "Swedish"
+                        });
+                });
+
             modelBuilder.Entity("Assignment1.Models.Person", b =>
                 {
-                    b.Property<string>("PersonId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("CityId")
@@ -99,7 +123,7 @@ namespace Assignment1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PersonId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CityId");
 
@@ -108,24 +132,46 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            PersonId = "731eb0e2-3be0-4efe-ba59-6090251a30f2",
+                            Id = "dceae8c6-857c-41a8-9b38-77c55afe9d33",
                             CityId = 1,
                             Name = "Niklas Bergh",
                             Phone = "031-123456"
                         },
                         new
                         {
-                            PersonId = "e96cbc49-c6de-4028-a42b-2c9e20fcf5c4",
+                            Id = "9a93fdd7-6cf5-4d5f-9c77-09903ddf06f3",
                             CityId = 2,
                             Name = "Greger Puff",
                             Phone = "031-666666"
                         },
                         new
                         {
-                            PersonId = "ac474b7c-1baa-429a-8cd6-6fc5fe406e1e",
+                            Id = "b4690a49-42cd-40b1-ab1b-9d7c178d2d80",
                             CityId = 2,
                             Name = "The Dude",
                             Phone = "0707985544"
+                        });
+                });
+
+            modelBuilder.Entity("LanguagePerson", b =>
+                {
+                    b.Property<int>("LanguagesId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PeopleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LanguagesId", "PeopleId");
+
+                    b.HasIndex("PeopleId");
+
+                    b.ToTable("LanguagePerson");
+
+                    b.HasData(
+                        new
+                        {
+                            LanguagesId = 1,
+                            PeopleId = "dceae8c6-857c-41a8-9b38-77c55afe9d33"
                         });
                 });
 
@@ -149,6 +195,21 @@ namespace Assignment1.Migrations
                         .IsRequired();
 
                     b.Navigation("City");
+                });
+
+            modelBuilder.Entity("LanguagePerson", b =>
+                {
+                    b.HasOne("Assignment1.Models.Language", null)
+                        .WithMany()
+                        .HasForeignKey("LanguagesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Assignment1.Models.Person", null)
+                        .WithMany()
+                        .HasForeignKey("PeopleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Assignment1.Models.City", b =>

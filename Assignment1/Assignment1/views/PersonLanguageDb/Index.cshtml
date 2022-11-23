@@ -19,9 +19,9 @@
             @foreach (var language in Model)
             {
                 <tr>
-                    <td>@language.LanguageId</td>
+                    <td>@language.Id</td>
                     <td>@language.LanguageName</td>
-                    <td><a asp-action="RemoveLanguageFromCountry" class="btn btn-danger" asp-route-countryid=@ViewBag.CountryId asp-route-languageid=@language.LanguageId>Remove language</a> </td>
+                    <td><a asp-action="RemoveLanguageFromCountry" class="btn btn-danger" asp-route-countryid=@ViewBag.CountryId asp-route-languageid=@language.Id>Remove language</a> </td>
                 </tr>
             }
             </tbody>

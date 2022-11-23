@@ -42,7 +42,7 @@ namespace Assignment1.controllers
         [HttpPost]
         public IActionResult Create(Person person)
         {
-            person.PersonId = Guid.NewGuid().ToString();
+            person.Id = Guid.NewGuid().ToString();
 
             ModelState.Remove("Id");
 
@@ -60,7 +60,7 @@ namespace Assignment1.controllers
 
         public IActionResult Delete(string id)
         {
-            var personToDelete = PeopleViewModel.listOfPeople.FirstOrDefault(x => x.PersonId == id);
+            var personToDelete = PeopleViewModel.listOfPeople.FirstOrDefault(x => x.Id == id);
             if (personToDelete != null)
             {
                 PeopleViewModel.listOfPeople.Remove(personToDelete);

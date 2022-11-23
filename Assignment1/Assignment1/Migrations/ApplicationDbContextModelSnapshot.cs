@@ -83,24 +83,31 @@ namespace Assignment1.Migrations
 
             modelBuilder.Entity("Assignment1.Models.Language", b =>
                 {
-                    b.Property<int>("LanguageId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LanguageId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("LanguageName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("LanguageId");
+                    b.HasKey("Id");
 
                     b.ToTable("Languages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LanguageName = "Swedish"
+                        });
                 });
 
             modelBuilder.Entity("Assignment1.Models.Person", b =>
                 {
-                    b.Property<string>("PersonId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("CityId")
@@ -114,7 +121,7 @@ namespace Assignment1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PersonId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CityId");
 
@@ -123,40 +130,47 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            PersonId = "8042523c-bcef-44d2-9736-ca0adc02055b",
+                            Id = "dceae8c6-857c-41a8-9b38-77c55afe9d33",
                             CityId = 1,
                             Name = "Niklas Bergh",
                             Phone = "031-123456"
                         },
                         new
                         {
-                            PersonId = "35a81482-ed2e-44eb-ad92-e6848e01bd94",
+                            Id = "9a93fdd7-6cf5-4d5f-9c77-09903ddf06f3",
                             CityId = 2,
                             Name = "Greger Puff",
                             Phone = "031-666666"
                         },
                         new
                         {
-                            PersonId = "e29161bf-8265-41a9-b2d9-421567c5f53d",
+                            Id = "b4690a49-42cd-40b1-ab1b-9d7c178d2d80",
                             CityId = 2,
                             Name = "The Dude",
                             Phone = "0707985544"
                         });
                 });
 
-            modelBuilder.Entity("CountryLanguage", b =>
+            modelBuilder.Entity("LanguagePerson", b =>
                 {
-                    b.Property<int>("CountriesCountryId")
+                    b.Property<int>("LanguagesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("LanguagesLanguageId")
-                        .HasColumnType("int");
+                    b.Property<string>("PeopleId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("CountriesCountryId", "LanguagesLanguageId");
+                    b.HasKey("LanguagesId", "PeopleId");
 
-                    b.HasIndex("LanguagesLanguageId");
+                    b.HasIndex("PeopleId");
 
-                    b.ToTable("CountryLanguage");
+                    b.ToTable("LanguagePerson");
+
+                    b.HasData(
+                        new
+                        {
+                            LanguagesId = 1,
+                            PeopleId = "dceae8c6-857c-41a8-9b38-77c55afe9d33"
+                        });
                 });
 
             modelBuilder.Entity("Assignment1.Models.City", b =>
@@ -181,17 +195,17 @@ namespace Assignment1.Migrations
                     b.Navigation("City");
                 });
 
-            modelBuilder.Entity("CountryLanguage", b =>
+            modelBuilder.Entity("LanguagePerson", b =>
                 {
-                    b.HasOne("Assignment1.Models.Country", null)
+                    b.HasOne("Assignment1.Models.Language", null)
                         .WithMany()
-                        .HasForeignKey("CountriesCountryId")
+                        .HasForeignKey("LanguagesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Assignment1.Models.Language", null)
+                    b.HasOne("Assignment1.Models.Person", null)
                         .WithMany()
-                        .HasForeignKey("LanguagesLanguageId")
+                        .HasForeignKey("PeopleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

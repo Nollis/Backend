@@ -28,7 +28,7 @@ namespace Assignment1.controllers
         [HttpPost]
         public IActionResult Create(Person person, int cityId)
         {
-            person.PersonId = Guid.NewGuid().ToString();
+            person.Id = Guid.NewGuid().ToString();
 
             var city = _context.Cities.Find(cityId);
             person.CityId = city.CityId;

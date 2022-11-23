@@ -9,6 +9,6 @@ namespace Assignment1.Models
         public string CountryName { get; set; }
 
         public List<City> Cities { get; set; } = new List<City>();
-        public List<Language> Languages { get; set; } = new List<Language>();
+        
     }
 }
