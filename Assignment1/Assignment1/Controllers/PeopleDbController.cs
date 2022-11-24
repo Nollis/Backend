@@ -2,6 +2,7 @@
 using Assignment1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment1.controllers
 {
@@ -16,7 +17,9 @@ namespace Assignment1.controllers
 
         public IActionResult Index()
         {
-            return View(_context.People.ToList());
+            var PeopleSpeak = _context.People.Include(p => p.City).ToList(); 
+            //return View(_context.People.ToList());
+            return View(PeopleSpeak);
         }
 
         public IActionResult Create()
@@ -33,7 +36,7 @@ namespace Assignment1.controllers
             var city = _context.Cities.Find(cityId);
             person.CityId = city.CityId;
 
-            ModelState.Remove("PersonId");
+            ModelState.Remove("Id");
             ModelState.Remove("City");
 
             if (ModelState.IsValid)

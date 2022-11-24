@@ -11,8 +11,9 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th></th>
+            <th>Language</th>
+            <th>Language speakers</th>
+            <th> </th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,14 @@
             <tr>
                 <td>@language.Id</td>
                 <td>@language.LanguageName</td>
+                <td>
+                    <ul>
+                        @foreach (var item in language.People) 
+                        {
+                            <li>@item.Name</li>
+                        }
+                    </ul>
+                 </td>
                 <td><a asp-action="Delete" asp-route-languageid=@language.Id class="btn btn-danger">Delete</a></td>
             </tr>
         }

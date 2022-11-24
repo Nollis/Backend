@@ -25,7 +25,7 @@
                 <td>@person.Id</td>
                 <td>@person.Name</td>
                 <td>@person.Phone</td>
-                <td>@person.City</td>
+                <td>@person.City.CityName</td>
                 <td><a asp-action="Delete" asp-route-personid=@person.Id class="btn btn-danger">Delete</a></td>
                 <td><a asp-controller="PersonLanguageDb" asp-action="Index" asp-route-personid=@person.Id class="btn btn-primary">Languages</a></td>
             </tr>

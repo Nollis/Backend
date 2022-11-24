@@ -11,8 +11,8 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th> </th>
+            <th>Country</th>
+            <th>Cities</th>
             <th> </th>
         </tr>
     </thead>
@@ -22,6 +22,14 @@
                 <tr>
                     <td>@country.CountryId</td>
                     <td>@country.CountryName</td>
+                    <td>
+                        <ul>
+                        @foreach (var item in country.Cities)
+                        {
+                            <li>@item.CityName</li>
+                        }
+                        </ul>
+                    </td>
                     <td><a asp-action="Delete" asp-route-countryid=@country.CountryId class="btn btn-danger">Delete</a></td>
                 </tr>
         }

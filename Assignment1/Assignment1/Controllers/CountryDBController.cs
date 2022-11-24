@@ -1,6 +1,7 @@
 ﻿using Assignment1.Data;
 using Assignment1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment1.Controllers
 {
@@ -15,7 +16,9 @@ namespace Assignment1.Controllers
 
         public IActionResult Index()
         {
-            return View(_context.Countries.ToList());
+            var cities = _context.Countries.Include(p => p.Cities).ToList();
+            //return View(_context.Countries.ToList());
+            return View(cities);
         }
 
         public IActionResult Create()

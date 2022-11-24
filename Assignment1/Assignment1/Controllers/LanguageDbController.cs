@@ -1,6 +1,7 @@
 ﻿using Assignment1.Data;
 using Assignment1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment1.Controllers
 {
@@ -14,7 +15,9 @@ namespace Assignment1.Controllers
         }
         public IActionResult Index()
         {
-            return View(_context.Languages.ToList());
+            var Speakers = _context.Languages.Include(p => p.People).ToList();
+            //return View(_context.Languages.ToList());
+            return View(Speakers);
         }
 
         public IActionResult Create()
