@@ -4,6 +4,7 @@ using Assignment1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221130125223_Added some roles and a default admin")]
+    partial class Addedsomerolesandadefaultadmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,19 +102,19 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e2a6a065-85d6-4770-bf8a-75bc9ba44398",
+                            Id = "b8e386d7-0a63-4748-82d7-e232a602af7e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5081e73d-9452-4959-a672-05316205a6f3",
+                            ConcurrencyStamp = "03f1e41c-e60b-4c26-bfba-ae65ec4cacb0",
                             Email = "boss@boss.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             FirstName = "I_control",
                             LastName = "Everything",
                             LockoutEnabled = false,
                             NormalizedEmail = "BOSS@BOSS.COM",
                             NormalizedUserName = "BOSS@BOSS.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEC6YSsixg06IhLJy+V3B95iedDc1jmvLTAUVby6TVwnh/HvyaEnhpx5rg/rcZJNP3A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP/Aro2hDPbRFEItplGdNICur8TuBCnomufY1nhj+vvd664CdWR32dj++JSgOopqyA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "df97faa2-6efa-4320-9d34-af1e26822c4f",
+                            SecurityStamp = "91d0f4d8-c59a-451b-8ce9-cc8d4d0dd101",
                             TwoFactorEnabled = false,
                             UserName = "boss@boss.com",
                             birthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -228,21 +230,21 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e3d0f996-ab23-47aa-8058-24f202383ac8",
+                            Id = "629e0409-110d-4388-80f1-12070b009cb7",
                             CityId = 1,
                             Name = "Niklas Bergh",
                             Phone = "031-123456"
                         },
                         new
                         {
-                            Id = "f5b102f5-1614-4b9a-a9aa-76f18aa84092",
+                            Id = "8de9485b-e05d-405e-9f7d-21cc933a50f9",
                             CityId = 2,
                             Name = "Greger Puff",
                             Phone = "031-666666"
                         },
                         new
                         {
-                            Id = "47d286a4-ff32-4704-bbbc-faaacc9b99c3",
+                            Id = "02d1d1d8-c98e-4e32-88be-b21a3a57bdcd",
                             CityId = 2,
                             Name = "The Dude",
                             Phone = "0707985544"
@@ -267,7 +269,7 @@ namespace Assignment1.Migrations
                         new
                         {
                             LanguagesId = 1,
-                            PeopleId = "e3d0f996-ab23-47aa-8058-24f202383ac8"
+                            PeopleId = "629e0409-110d-4388-80f1-12070b009cb7"
                         });
                 });
 
@@ -300,15 +302,15 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f3413fbb-546d-40dc-a7f5-df6660c57dca",
-                            ConcurrencyStamp = "9828b2f7-9ea7-49dc-8ded-6b58e664d094",
+                            Id = "e0072cf9-d846-47cb-9e6b-52c3f79af289",
+                            ConcurrencyStamp = "289904c6-e832-4351-96eb-886770146cac",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "f2d9fc1e-384e-440a-bb15-6612f7a13cca",
-                            ConcurrencyStamp = "7742c8ba-cc9d-465c-94b3-0ad5e1b33f29",
+                            Id = "fa8ceb04-26b4-4602-b33a-eff1b7371247",
+                            ConcurrencyStamp = "df84533c-c21a-47bb-b85d-8d91f50a1e22",
                             Name = "Citizen",
                             NormalizedName = "CITIZEN"
                         });
@@ -405,8 +407,8 @@ namespace Assignment1.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "e2a6a065-85d6-4770-bf8a-75bc9ba44398",
-                            RoleId = "f3413fbb-546d-40dc-a7f5-df6660c57dca"
+                            UserId = "b8e386d7-0a63-4748-82d7-e232a602af7e",
+                            RoleId = "e0072cf9-d846-47cb-9e6b-52c3f79af289"
                         });
                 });
 

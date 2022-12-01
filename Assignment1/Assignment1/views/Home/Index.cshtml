@@ -1,4 +1,4 @@
-﻿
+﻿@model PeopleViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,7 +7,7 @@
 
 <h2>List of projects on github</h2>
 
-<a href="https://github.com/Nollis/Sokoban">Sokoban</a><br />
+@*<a href="https://github.com/Nollis/Sokoban">Sokoban</a><br />
 <p>A javascript game</p>
 <hr />
 <a href="https://github.com/Nollis/Frontend">Frontend</a><br />
@@ -20,5 +20,31 @@
 <p>Simple C# console calculator</p>
 <hr />
 <a href="https://github.com/Nollis/HangMan">Hangman</a><br />
-<p>Simple C# console game</p>
+<p>Simple C# console game</p>*@
+
+@if (!User.Identity.IsAuthenticated)
+{
+        <p>Hello! Please login!</p>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Citizen") && User.IsInRole("Admin"))
+    {
+                <p>Hello Citizen & Admin!</p>
+    }
+    else if (User.IsInRole("Citizen"))
+    {
+                <p>Hello Citizen!</p>
+    }
+    else if (User.IsInRole("Admin"))
+    {
+                <p>Hello Admin!</p>
+    }
+    else
+    {
+                <p>Hello logged in visitor!</p>
+    }
+}
+
 <hr />

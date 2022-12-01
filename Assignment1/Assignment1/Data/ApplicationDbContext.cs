@@ -1,12 +1,14 @@
 ﻿using Assignment1.Controllers;
 using Assignment1.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Reflection.Emit;
 
 namespace Assignment1.Data
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext:IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
         {
@@ -45,6 +47,46 @@ namespace Assignment1.Data
                 .HasMany(l => l.Languages)
                 .WithMany(c => c.People)
                 .UsingEntity(j => j.HasData(new { PeopleId = personId, LanguagesId = 1 }));
+
+            string adminRoleId = Guid.NewGuid().ToString();
+            string citizenId = Guid.NewGuid().ToString();
+            string userId = Guid.NewGuid().ToString();
+
+            modelbuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole
+                {
+                    Id = adminRoleId,
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
+                });
+            modelbuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole
+                {
+                    Id = citizenId,
+                    Name = "Citizen",
+                    NormalizedName = "CITIZEN"
+                });
+
+            PasswordHasher<ApplicationUser> hasher = new PasswordHasher<ApplicationUser>();
+
+            modelbuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
+            {
+                Id = userId,
+                Email = "boss@boss.com",
+                NormalizedEmail = "BOSS@BOSS.COM",
+                UserName = "boss@boss.com",
+                NormalizedUserName = "BOSS@BOSS.COM",
+                FirstName = "I_control",
+                LastName = "Everything",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "Password!")
+            });
+
+            modelbuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = adminRoleId,
+                UserId = userId
+            });
 
         }
     }

@@ -1,10 +1,12 @@
 ﻿using Assignment1.Data;
 using Assignment1.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Assignment1.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CountryDBController : Controller
     {
         readonly ApplicationDbContext _context;
