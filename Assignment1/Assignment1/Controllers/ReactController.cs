@@ -63,6 +63,18 @@ namespace Assignment1.Controllers
             return await _context.Countries.ToListAsync();
         }
 
+        [HttpGet("cities")]
+        public async Task<ActionResult<IEnumerable<City>>> GetCity(int CountryId)
+        {
+            return await _context.Cities.Where(s => s.CountryId == CountryId).ToListAsync();
+        }
+
+        [HttpGet("languages")]
+        public async Task<ActionResult<IEnumerable<Language>>> GetLanguage()
+        {
+            return await _context.Languages.ToListAsync();
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
